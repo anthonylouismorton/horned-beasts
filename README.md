@@ -18,3 +18,10 @@ Estimate of time needed to complete: 1 hr
 Start Time:  4:10 PM
 End Time:  8:50 PM
 Actual time needed to complete: 4 hr 40 min
+
+Day 3
+### Feature #1: Display a Modal
+Estimate of time needed to complete: 1 hr
+Start Time:  4:29 PM
+End Time: 
+Actual time needed to complete:
