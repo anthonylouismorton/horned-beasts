@@ -1,9 +1,9 @@
 import { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 
-
-export default class BeastImage extends Component {
+export default class HornedBeast extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -17,21 +17,26 @@ export default class BeastImage extends Component {
       votes: this.state.votes + 1,
       
     });
-    this.props.modalHandler();
+    // this.props.modalHandler();
+  }
+  modalClick = (event) => {
+    this.props.openModalHandler();
   }
 
   render() {
     return (
       <>      
-      <Card style={{ width: '18rem' }}>
-      <Card.Title>{this.props.keyword}</Card.Title>
-        <Card.Img  onClick={this.handleClick} src={this.props.image} alt='hornedBeastImage' variant="top" />
+      <Card style={{ width: '17.4rem' }}>
+      <Card.Title>{this.props.keyword}{this.state.likes} {this.state.votes}</Card.Title>
+        <Card.Img src={this.props.image} alt={this.props.description} onClick={this.modalClick} variant="top" />
         <Card.Body>
           <Card.Text>
-            {this.state.likes} {this.state.votes}
+            {this.props.description}
+            <Button variant="secondary" onClick={this.handleClick}>Vote</Button>
           </Card.Text>
         </Card.Body>
       </Card>
+      
      </>
     )
   }
