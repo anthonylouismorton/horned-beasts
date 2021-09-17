@@ -8,9 +8,10 @@ export default class SelectedBeast extends Component {
     return (
       <Modal show={this.props.show} onHide={this.props.close}>
         <Modal.Header closeButton >
-          <Modal.Title>Modal title</Modal.Title>
+          <Modal.Title>{this.props.beast.title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          <img src={this.props.beast.image_url} alt={this.props.beast.title}/>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={this.props.close}>Close</Button>

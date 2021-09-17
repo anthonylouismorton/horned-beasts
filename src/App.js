@@ -8,15 +8,32 @@ import Main from './components/Main.js';
 import beastBios from './data.json';
 import SelectedBeast from './components/SelectedBeast';
 
- export default class App extends React.Component {
+ export default class App extends Component {
   constructor(props){
     super(props);
     this.state = {
       showModal: false,
-      beast: beastBios[0]
+      beast: beastBios[0],
+      beastBios: beastBios
     };
   };
-  modalHandler = (beast) =>{
+
+  handleSelect = (selection) => {
+    if(selection === '')
+    {
+      this.setState({beastBios: beastBios})  
+    }
+    else{
+      let update = beastBios.filter(beast => beast.horns === Number(selection))
+      this.setState({
+        beastBios: update
+      })
+    }
+
+    
+  }
+
+  openModalHandler = (beast) =>{
     this.setState({
       showModal: true,
        beast: beast})
@@ -28,10 +45,10 @@ import SelectedBeast from './components/SelectedBeast';
   render(){
     return (
       <Container>
-        <Header title="Horned Beasts" />
-        <Main modalHandler={this.modalHandler} beastBios={beastBios}/>
+        <Header form={this.handleSelect} title="Horned Beasts" />
+        <Main openModalHandler={this.openModalHandler} beastBios={this.state.beastBios}/>
         <Footer title="Created by Anthony Morton"/>
-        <SelectedBeast beast={this.props.beast} show={this.state.showModal} close={this.closeModalHandler}/>
+        <SelectedBeast beast={this.state.beast} show={this.state.showModal} close={this.closeModalHandler}/>
       </Container>
     );
   };
