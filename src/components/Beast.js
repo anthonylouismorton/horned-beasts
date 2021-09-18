@@ -12,7 +12,7 @@ export default class HornedBeast extends Component {
     }
   }
   handleClick = (event) => {
-    let count = 0
+    
     this.setState({
       votes: this.state.votes + 1,
       
